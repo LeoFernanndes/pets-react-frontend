@@ -8,8 +8,10 @@ import TopNavbar from "@/components/TopNavbar";
 
 
 // TODO: Find a way of extracting those services to the PetService
-
-export default function PetsDashboard () {
+interface PetsDashboardProps {
+    pets: PetDto[]
+}
+export default function PetsDashboard (props: PetsDashboardProps) {
     const [pets, setPets] = useState<PetDto[]>([])
     const [showCreatePetModal, setShowCreatePetModal] = useState(false)
     const [petOnUpdateModal, setPetOnUpdateModal] = useState<PetDto>(new PetDto())
@@ -59,7 +61,7 @@ export default function PetsDashboard () {
             <UpdatePetModal show={showUpdatePetModal} onClose={() => setShowUpdatePetModal(false)} onSave={() => updateComponent()} pet={petOnUpdateModal}></UpdatePetModal>
             <div className={"w-full h-full flex flex-col"}>
                 <div className={"flex h-full flex-col justify-center items-center w-full bg-gray-200"}>
-                    <div className={"flex pb-3 h-full w-4/6 lg:w-5/6"}>
+                    <div className={"flex pt-3 pb-3 h-full w-4/6 lg:w-5/6"}>
                         <div className={"w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8 place-items-center overflow-y-scroll scrollbar-hide"}>
                             {
                                 pets.map(pet => {

@@ -43,7 +43,6 @@ const Pet = () => {
                     for(let i=0; i < 10; i++){
                         dummyArray.push(response.data.photos)
                     }
-                    // setImages(dummyArray)
                 })
                 .catch(error => console.log(error))
         }
@@ -59,80 +58,76 @@ const Pet = () => {
         <div className={"w-dvw h-dvh"}>
             <ExpandedPetImage imageUrl={expandedPetImage} onClose={() => setShowExpandedPetImage(false)} show={showExpandedPetImage}></ExpandedPetImage>
             <div className={"w-full h-full flex flex-col"}>
-                <div className={"flex h-[7%] w-full bg-gray-700"}>
+                <div className={"flex h-[5%] w-full bg-gray-700"}>
                     <div className={"flex w-32 justify-center items-center hover:bg-gray-800 transition duration-100"} onClick={redirectHome}>
                         <p className={"text-gray-200 text-xl font-bold"}>Home</p>
                     </div>
                 </div>
-                <div className={"flex h-[93%] w-full"}>
-                    <div className={"flex flex-col grow w-full justify-center items-center bg-gray-400 overflow-scroll"}>
-                        <div className={"flex h-1/3 w-2/3 justify-center items center"}>
-                            <div className={"flex h-full w-full"}>
-                                <div className={"w-[5%] bg-gray-100"}>
-
-                                </div>
-                                <div className={"flex justify-center items-center w-[90%] overflow-hidden h-full"}>
-                                    <img
-                                        className={"flex justify-center items-center overflow-hidden w-full"}
-                                        src={corrosselImages[0]}
-                                        alt={`Picture of ${pet.name}`}
-                                    />
-                                </div>
-                                <div className={"w-[5%] bg-gray-100"}>
-
+                <div className={"flex h-[95%] w-full"}>
+                    <div className={"flex grow w-full h-full justify-center bg-gray-400"}>
+                        <div className={"flex flex-col w-5/6 lg:w-2/3 justify-center items-center bg-gray-100 overflow-scroll"}>
+                            <div className={"flex h-1/6 lg:h-1/3 w-full lg:w-2/3 justify-center items center"}>
+                                <div className={"flex h-full w-full justify-center"}>
+                                    <div className={"flex justify-center items-center w-full overflow-hidden h-full"}>
+                                        <img
+                                            className={"flex justify-center items-center overflow-hidden w-full"}
+                                            src={corrosselImages[0]}
+                                            alt={`Picture of ${pet.name}`}
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className={"flex flex-col h-2/3 w-2/3"}>
-                            <div className={"flex justify-center items-center bg-gray-100 pt-6 pb-6"}>
-                                <div className={"text-gray-700 text-3xl"}>{pet.name}</div>
-                            </div>
-                            <div className={"flex flex-col items-center bg-gray-100"}>
-                                <div className={"flex w-2/3 mt-5"}>
-                                    <div className={"w-1/5 h-24 bg-gray-100"}>
-                                        <div className={"flex h-8 items-center justify-center text-lg text-gray-800 pl-3 font-medium"}>Age</div>
-                                        <div className={"flex h-16 items-center justify-center text-gray-700 pl-3"}>{pet.age} years</div>
-                                    </div>
-                                    <div className={"w-1/5 h-24 bg-gray-100"}>
-                                        <div className={"flex h-8 items-center justify-center text-lg text-gray-800 pl-3 font-medium"}>Sex</div>
-                                        <div className={"flex h-16 items-center justify-center text-gray-700 pl-3"}>{pet.sex}</div>
-                                    </div>
-                                    <div className={"w-1/5 h-24 bg-gray-100"}>
-                                        <div className={"flex h-8 items-center justify-center text-lg text-gray-800 pl-3 font-medium"}>Size</div>
-                                        <div className={"flex h-16 items-center justify-center text-gray-700 pl-3"}>{pet.size}</div>
-                                    </div>
-                                    <div className={"w-1/5 h-24 bg-gray-100"}>
-                                        <div className={"flex h-8 items-center justify-center text-lg text-gray-800 pl-3 font-medium"}>Weight</div>
-                                        <div className={"flex h-16 items-center justify-center text-gray-700 pl-3"}>{pet.weight} kilograms</div>
-                                    </div>
-                                    <div className={"w-1/5 h-24 bg-gray-100"}>
-                                        <div className={"flex h-8 items-center text-lg text-gray-800 pl-3 font-medium"}>Behavior</div>
-                                        <div className={"flex h-16 items-center text-gray-700 pl-3"}>{pet.behavior}</div>
-                                    </div>
+                            <div className={"flex flex-col h-5/6 lg:h-2/3 w-2/3"}>
+                                <div className={"flex justify-center items-center bg-gray-100 pt-6 pb-6"}>
+                                    <div className={"text-gray-700 text-3xl"}>{pet.name}</div>
                                 </div>
-                                <div className={"w-2/3 h-24 bg-gray-100 mt-5"}>
-                                    <div className={"flex h-8 items-center text-lg text-gray-800 pl-3 font-medium"}>Description</div>
-                                    <div className={"flex h-16 items-center text-gray-700 pl-3"}>{pet.description}</div>
-                                </div>
-                                <div className={"w-2/3 h-24 bg-gray-100 mt-5"}>
-                                    <div className={"flex h-8 items-center text-lg text-gray-800 pl-3 font-medium"}>Observations</div>
-                                    <div className={"flex h-16 items-center text-gray-700 pl-3"}>{pet.observations}</div>
-                                </div>
-                                <div className={"w-2/3 bg-gray-100 mt-5 pb-10"}>
-                                    <div className={"flex h-8 items-center text-lg text-gray-800 pl-3 font-medium"}>Photos</div>
-                                    <div className={"grid grid-cols-4 bg-gray"}>
-                                        {
-                                            images.map(image => {
-                                                return (
-                                                    <div key={image} className={"flex justify-center align-center overflow-hidden h-48 p-1"} onClick={() => expandPetImage(image)}>
-                                                        <img
-                                                            src={image} alt={"pet image"}
-                                                            className={"h-full w-full object-cover"}
-                                                        />
-                                                    </div>
-                                                )
-                                            })
-                                        }
+                                <div className={"w-full flex flex-col items-center bg-gray-100"}>
+                                    <div className={"grid grid-cols-2 lg:flex  lg:flex-row items-center w-full mt-5"}>
+                                        <div className={" lg:w-1/5 h-24 bg-gray-100"}>
+                                            <div className={"flex h-8 items-center justify-center text-lg text-gray-800 pl-3 font-medium"}>Age</div>
+                                            <div className={"flex h-16 items-center justify-center text-gray-700 pl-3"}>{pet.age} years</div>
+                                        </div>
+                                        <div className={" lg:w-1/5 h-24 bg-gray-100"}>
+                                            <div className={"flex h-8 items-center justify-center text-lg text-gray-800 pl-3 font-medium"}>Sex</div>
+                                            <div className={"flex h-16 items-center justify-center text-gray-700 pl-3"}>{pet.sex}</div>
+                                        </div>
+                                        <div className={" lg:w-1/5 h-24 bg-gray-100"}>
+                                            <div className={"flex h-8 items-center justify-center text-lg text-gray-800 pl-3 font-medium"}>Size</div>
+                                            <div className={"flex h-16 items-center justify-center text-gray-700 pl-3"}>{pet.size}</div>
+                                        </div>
+                                        <div className={" lg:w-1/5 h-24 bg-gray-100"}>
+                                            <div className={"flex h-8 items-center justify-center text-lg text-gray-800 pl-3 font-medium"}>Weight</div>
+                                            <div className={"flex h-16 items-center justify-center text-gray-700 pl-3"}>{pet.weight} kg</div>
+                                        </div>
+                                        <div className={" lg:w-1/5 h-24 bg-gray-100"}>
+                                            <div className={"flex h-8 items-center justify-center text-lg text-gray-800 pl-3 font-medium"}>Behavior</div>
+                                            <div className={"flex h-16 items-center justify-center text-gray-700 pl-3"}>{pet.behavior}</div>
+                                        </div>
+                                    </div>
+                                    <div className={"w-full h-24 bg-gray-100 mt-5"}>
+                                        <div className={"flex h-8 items-center text-lg text-gray-800 pl-3 font-medium"}>Description</div>
+                                        <div className={"flex h-16 items-center text-gray-700 pl-3"}>{pet.description}</div>
+                                    </div>
+                                    <div className={"w-full h-24 bg-gray-100 mt-5"}>
+                                        <div className={"flex h-8 items-center text-lg text-gray-800 pl-3 font-medium"}>Observations</div>
+                                        <div className={"flex h-16 items-center text-gray-700 pl-3"}>{pet.observations}</div>
+                                    </div>
+                                    <div className={"w-full bg-gray-100 mt-5 pb-10"}>
+                                        <div className={"flex h-8 items-center text-lg text-gray-800 pl-3 font-medium"}>Photos</div>
+                                        <div className={"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 bg-gray"}>
+                                            {
+                                                images.map(image => {
+                                                    return (
+                                                        <div key={image} className={"flex justify-center align-center overflow-hidden h-48 p-1"} onClick={() => expandPetImage(image)}>
+                                                            <img
+                                                                src={image} alt={"pet image"}
+                                                                className={"h-full w-full object-cover"}
+                                                            />
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
